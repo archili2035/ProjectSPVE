@@ -1,0 +1,11 @@
+# WorkBuddy local state
+.workbuddy/
+
+# OS/editor noise
+.DS_Store
+Thumbs.db
+*.tmp
+*.log
+
+# Export scratch files
+04_exports/*.tmp
