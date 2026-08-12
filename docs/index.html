@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ProjectSPVE - 方案文档库</title>
+  <style>
+    :root {
+      --bg: #f5f5f5;
+      --card-bg: #ffffff;
+      --text: #1a1a1a;
+      --text-secondary: #555;
+      --border: #e0e0e0;
+      --link: #1a73e8;
+      --link-hover: #1557b0;
+      --tag-bg: #e8f0fe;
+      --tag-text: #1a73e8;
+      --divider: #e8e8e8;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    .container {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 40px 24px 60px;
+    }
+
+    header {
+      margin-bottom: 40px;
+    }
+
+    header h1 {
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 8px;
+    }
+
+    header p {
+      font-size: 15px;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    .section {
+      margin-bottom: 36px;
+    }
+
+    .section-title {
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      color: var(--text-secondary);
+      margin-bottom: 12px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--divider);
+    }
+
+    .card-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 20px;
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      transition: box-shadow 0.15s, border-color 0.15s;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .card:hover {
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+      border-color: #c0c0c0;
+    }
+
+    .card-icon {
+      font-size: 22px;
+      flex-shrink: 0;
+      line-height: 1;
+      margin-top: 1px;
+    }
+
+    .card-body {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .card-title {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--link);
+      margin-bottom: 3px;
+      line-height: 1.5;
+    }
+
+    a.card:hover .card-title {
+      color: var(--link-hover);
+    }
+
+    .card-meta {
+      font-size: 12px;
+      color: var(--text-secondary);
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .tag {
+      display: inline-block;
+      background: var(--tag-bg);
+      color: var(--tag-text);
+      font-size: 11px;
+      padding: 1px 8px;
+      border-radius: 4px;
+      font-weight: 500;
+    }
+
+    .repos-link {
+      font-size: 13px;
+      color: var(--text-secondary);
+      margin-top: 20px;
+      padding-top: 16px;
+      border-top: 1px solid var(--divider);
+    }
+
+    .repos-link a {
+      color: var(--link);
+      text-decoration: none;
+    }
+
+    .repos-link a:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 640px) {
+      .container { padding: 24px 16px 40px; }
+      header h1 { font-size: 22px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>ProjectSPVE</h1>
+      <p>角色驱动的 PVE 刷宝射击二游 · 方案讨论与宣传片分析文档库</p>
+    </header>
+
+    <div class="section">
+      <div class="section-title">框架</div>
+      <div class="card-list">
+        <a class="card" href="trailer_analysis_index.html">
+          <div class="card-icon">🗂️</div>
+          <div class="card-body">
+            <div class="card-title">宣传片分析索引</div>
+            <div class="card-meta"><span class="tag">索引</span>所有分析报告的入口</div>
+          </div>
+        </a>
+        <a class="card" href="trailer_quality_framework.html">
+          <div class="card-icon">📋</div>
+          <div class="card-body">
+            <div class="card-title">宣传片评价框架：第一钩子、品质、美与实机</div>
+            <div class="card-meta"><span class="tag">框架</span>评价标准与方法论</div>
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">宣传片分析报告</div>
+      <div class="card-list">
+        <a class="card" href="atomheart2_trailer_report.html">
+          <div class="card-icon">⚛️</div>
+          <div class="card-body">
+            <div class="card-title">《原子之心2》公布预告</div>
+            <div class="card-meta"><span class="tag">FPS</span><span class="tag">苏联朋克</span>玩家评论/弹幕观察</div>
+          </div>
+        </a>
+        <a class="card" href="doom_dark_ages_trailer_report.html">
+          <div class="card-icon">🔥</div>
+          <div class="card-body">
+            <div class="card-title">《毁灭战士：黑暗时代》公布预告</div>
+            <div class="card-meta"><span class="tag">FPS</span><span class="tag">动作</span>玩家评论/弹幕观察</div>
+          </div>
+        </a>
+        <a class="card" href="guiguang_trailer_report.html">
+          <div class="card-icon">🔍</div>
+          <div class="card-body">
+            <div class="card-title">《诡影藏锋》首曝PV&实机演示</div>
+            <div class="card-meta"><span class="tag">二次元</span><span class="tag">TPS</span>玩家评论/弹幕观察</div>
+          </div>
+        </a>
+        <a class="card" href="reverse1999_trailer_report.html">
+          <div class="card-icon">⏳</div>
+          <div class="card-body">
+            <div class="card-title">《重返未来：1999》游戏首曝PV</div>
+            <div class="card-meta"><span class="tag">二次元</span><span class="tag">复古</span>玩家评论/弹幕观察</div>
+          </div>
+        </a>
+        <a class="card" href="reverse_collapse_f_trailer_report.html">
+          <div class="card-icon">🗡️</div>
+          <div class="card-body">
+            <div class="card-title">《逆向坍塌：F》首曝PV&实机演示</div>
+            <div class="card-meta"><span class="tag">二次元</span><span class="tag">策略</span>玩家评论/弹幕观察</div>
+          </div>
+        </a>
+        <a class="card" href="wangyue_trailer_report.html">
+          <div class="card-icon">🌙</div>
+          <div class="card-body">
+            <div class="card-title">《望月》月灵都市玩法预告</div>
+            <div class="card-meta"><span class="tag">二次元</span><span class="tag">开放世界</span>玩家评论/弹幕观察</div>
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <div class="repos-link">
+      方案文档仓库：<a href="https://github.com/archili2035/ProjectSPVE" target="_blank" rel="noopener">github.com/archili2035/ProjectSPVE</a>
+    </div>
+  </div>
+</body>
+</html>
