@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SPVE 项目立项书（正式整理版）</title>
+  <style>
+    :root {
+      --bg: #f3efe7;
+      --paper: #fffdf8;
+      --paper-2: #f8f1e8;
+      --ink: #211b16;
+      --muted: #685f56;
+      --line: #ded2c3;
+      --primary: #74371f;
+      --primary-2: #a4512b;
+      --dark: #2b2520;
+      --blue: #234f68;
+      --green: #496853;
+      --red: #7b302b;
+      --gold: #9a6d25;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+      color: var(--ink);
+      background: var(--bg);
+      line-height: 1.75;
+    }
+
+    a { color: var(--primary-2); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .page {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 28px 24px 72px;
+    }
+
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 22px;
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      border-radius: 30px;
+      padding: 46px;
+      background: var(--dark);
+      color: #fffaf1;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      right: -90px;
+      top: -90px;
+      width: 320px;
+      height: 320px;
+      border-radius: 50%;
+      border: 50px solid rgba(164, 81, 43, 0.28);
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      left: -120px;
+      bottom: -160px;
+      width: 360px;
+      height: 260px;
+      border-radius: 50%;
+      background: rgba(35, 79, 104, 0.24);
+    }
+
+    .hero-content { position: relative; z-index: 1; }
+
+    .kicker {
+      display: inline-flex;
+      padding: 5px 12px;
+      border-radius: 999px;
+      background: rgba(255, 250, 241, 0.1);
+      border: 1px solid rgba(255, 250, 241, 0.22);
+      font-size: 13px;
+      margin-bottom: 18px;
+    }
+
+    h1 {
+      margin: 0;
+      max-width: 900px;
+      font-size: clamp(34px, 5vw, 60px);
+      line-height: 1.08;
+      letter-spacing: -1.8px;
+    }
+
+    .subtitle {
+      max-width: 880px;
+      margin: 22px 0 0;
+      color: rgba(255, 250, 241, 0.78);
+      font-size: 18px;
+    }
+
+    .meta-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      margin-top: 36px;
+    }
+
+    .meta-card {
+      padding: 16px;
+      border-radius: 16px;
+      background: rgba(255, 250, 241, 0.08);
+      border: 1px solid rgba(255, 250, 241, 0.16);
+    }
+
+    .meta-card span {
+      display: block;
+      color: rgba(255, 250, 241, 0.62);
+      font-size: 12px;
+      margin-bottom: 6px;
+    }
+
+    .meta-card strong {
+      display: block;
+      font-size: 16px;
+      line-height: 1.45;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 260px minmax(0, 1fr);
+      gap: 28px;
+      margin-top: 28px;
+      align-items: start;
+    }
+
+    .toc {
+      position: sticky;
+      top: 24px;
+      padding: 18px;
+      border-radius: 22px;
+      background: var(--paper);
+      border: 1px solid var(--line);
+    }
+
+    .toc-title {
+      color: var(--primary);
+      font-weight: 700;
+      margin-bottom: 10px;
+      font-size: 13px;
+    }
+
+    .toc a {
+      display: block;
+      padding: 7px 0;
+      color: var(--muted);
+      font-size: 13px;
+      border-bottom: 1px solid rgba(222, 210, 195, 0.65);
+    }
+
+    .toc a:last-child { border-bottom: 0; }
+
+    section {
+      margin-bottom: 20px;
+      padding: 30px;
+      border-radius: 24px;
+      background: var(--paper);
+      border: 1px solid var(--line);
+    }
+
+    h2 {
+      margin: 0 0 16px;
+      font-size: 26px;
+      line-height: 1.28;
+      letter-spacing: -0.4px;
+    }
+
+    h3 {
+      margin: 24px 0 10px;
+      font-size: 18px;
+    }
+
+    p { margin: 0 0 14px; }
+    ul, ol { margin: 8px 0 0; padding-left: 22px; }
+    li { margin: 5px 0; }
+
+    .lead {
+      font-size: 17px;
+      color: var(--muted);
+      margin-bottom: 18px;
+    }
+
+    .quote {
+      margin: 18px 0;
+      padding: 22px;
+      border-radius: 20px;
+      background: var(--paper-2);
+      border: 1px solid var(--line);
+      color: var(--primary);
+      font-size: 22px;
+      line-height: 1.55;
+      font-weight: 700;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .card {
+      padding: 18px;
+      border-radius: 18px;
+      background: #fffaf2;
+      border: 1px solid var(--line);
+    }
+
+    .card h3, .card h4 { margin-top: 0; }
+    .card h4 { margin-bottom: 8px; font-size: 16px; }
+
+    .principles {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .principle {
+      min-height: 130px;
+      padding: 18px;
+      border-radius: 18px;
+      color: #fff;
+    }
+
+    .principle strong { display: block; font-size: 17px; margin-bottom: 8px; }
+    .principle span { display: block; color: rgba(255,255,255,0.82); font-size: 14px; }
+    .p1 { background: var(--primary); }
+    .p2 { background: var(--blue); }
+    .p3 { background: var(--green); }
+    .p4 { background: var(--red); }
+
+    .table-wrap { overflow-x: auto; }
+
+    table {
+      width: 100%;
+      min-width: 760px;
+      border-collapse: collapse;
+      font-size: 14px;
+    }
+
+    th, td {
+      padding: 12px 14px;
+      border-bottom: 1px solid var(--line);
+      text-align: left;
+      vertical-align: top;
+    }
+
+    th {
+      background: var(--paper-2);
+      color: var(--primary);
+      font-weight: 700;
+    }
+
+    .flow {
+      display: grid;
+      gap: 10px;
+      counter-reset: flow;
+    }
+
+    .flow-item {
+      display: grid;
+      grid-template-columns: 40px minmax(0, 1fr);
+      gap: 12px;
+      align-items: start;
+    }
+
+    .flow-item::before {
+      counter-increment: flow;
+      content: counter(flow);
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      background: var(--dark);
+      color: #fffaf1;
+      display: grid;
+      place-items: center;
+      font-weight: 700;
+      font-size: 14px;
+    }
+
+    .flow-body {
+      padding: 12px 14px;
+      border-radius: 14px;
+      background: #fffaf2;
+      border: 1px solid var(--line);
+    }
+
+    .note {
+      padding: 15px 18px;
+      margin: 18px 0;
+      border-radius: 16px;
+      background: rgba(164, 81, 43, 0.08);
+      border-left: 4px solid var(--primary-2);
+      color: var(--primary);
+    }
+
+    .footer {
+      text-align: center;
+      color: var(--muted);
+      font-size: 13px;
+      margin-top: 28px;
+    }
+
+    @media (max-width: 920px) {
+      .layout { grid-template-columns: 1fr; }
+      .toc { position: static; }
+      .meta-grid, .grid-3 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+
+    @media (max-width: 640px) {
+      .page { padding: 18px 14px 48px; }
+      .hero, section { padding: 22px; border-radius: 20px; }
+      .meta-grid, .grid-2, .grid-3, .principles { grid-template-columns: 1fr; }
+      h1 { letter-spacing: -0.8px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div class="nav">
+      <a href="index.html">返回文档库</a>
+      <span>ProjectSPVE · 正式立项书 V0.1 · 2026-08-19</span>
+    </div>
+
+    <header class="hero">
+      <div class="hero-content">
+        <div class="kicker">项目立项书</div>
+        <h1>SPVE：角色驱动的风格化暗黑朋克 TPS 刷宝射击</h1>
+        <p class="subtitle">以角色商业化为外层驱动，以 TPS 刷宝射击为核心体验，以复古朋克乌托邦崩坏为世界底盘，构建兼具即时爽感、长线 Build 和高记忆点世界观的 PVE 长线项目。</p>
+        <div class="meta-grid">
+          <div class="meta-card"><span>项目代号</span><strong>SPVE</strong></div>
+          <div class="meta-card"><span>项目类型</span><strong>PVE / TPS / 刷宝射击</strong></div>
+          <div class="meta-card"><span>当前阶段</span><strong>早期立项论证</strong></div>
+          <div class="meta-card"><span>建议动作</span><strong>进入概念验证</strong></div>
+        </div>
+      </div>
+    </header>
+
+    <div class="layout">
+      <nav class="toc">
+        <div class="toc-title">目录</div>
+        <a href="#summary">一、项目摘要</a>
+        <a href="#background">二、立项背景</a>
+        <a href="#positioning">三、项目定位</a>
+        <a href="#world">四、世界观与风格</a>
+        <a href="#gameplay">五、核心玩法</a>
+        <a href="#build">六、武器职业与 Build</a>
+        <a href="#content">七、内容规划</a>
+        <a href="#longterm">八、终局与长线</a>
+        <a href="#business">九、商业化</a>
+        <a href="#pv">十、首曝 PV</a>
+        <a href="#team">十一、团队能力</a>
+        <a href="#risk">十二、风险验证</a>
+        <a href="#decision">十三、立项建议</a>
+      </nav>
+
+      <main>
+        <section id="summary">
+          <h2>一、项目摘要</h2>
+          <p class="lead">SPVE 是一款以角色为核心商业化载体、以 TPS 刷宝射击为核心体验、以复古朋克与暗黑微恐世界观为差异化表达的 PVE 长线游戏项目。</p>
+          <div class="quote">角色负责吸引与留存，射击负责即时爽感，掉落与 Build 负责长线寿命，世界观负责差异化记忆点。</div>
+          <div class="grid-2">
+            <div class="card"><h3>核心目标</h3><ul><li>用 TPS 视角增强角色露出、人设联结和外观价值。</li><li>用刷图、掉落、改枪和 Build 构筑形成可重复游玩的核心循环。</li><li>用高记忆点场景构建世界观差异化。</li></ul></div>
+            <div class="card"><h3>产品口径</h3><ul><li>不是单纯二次元射击。</li><li>不是传统写实暗黑刷宝。</li><li>而是“风格化角色 + 暗黑微恐世界 + 复古朋克异常物件”。</li></ul></div>
+          </div>
+        </section>
+
+        <section id="background">
+          <h2>二、立项背景与品类机会</h2>
+          <p>刷宝游戏的核心吸引力来自“进入关卡—击杀敌人—获得掉落—优化构筑—挑战更高难度”的持续循环。该循环天然支撑长线游玩、装备追求、角色成长和社交讨论。</p>
+          <div class="grid-3">
+            <div class="card"><h3>PVE 低压力</h3><p>相较纯竞技射击，PVE 更适合低精力消耗的重复游玩，也更容易通过难度分层服务不同水平玩家。</p></div>
+            <div class="card"><h3>二游角色优势</h3><p>二游擅长角色标签、视觉设计、剧情包装和长线运营，但纯明亮二游表达并不天然适配刷宝。</p></div>
+            <div class="card"><h3>移动端待验证</h3><p>移动端是核心验证方向，PC 更适合作为品质展示与补充平台，不宜早期重度押注。</p></div>
+          </div>
+        </section>
+
+        <section id="positioning">
+          <h2>三、项目定位</h2>
+          <p class="lead">项目定义为：一款角色驱动的风格化暗黑朋克 TPS 刷宝射击游戏。</p>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>卖点</th><th>说明</th></tr></thead>
+              <tbody>
+                <tr><td>角色驱动</td><td>角色具备年代感、美感、个性和 Cos 欲望，是商业化与情感连接的核心载体。</td></tr>
+                <tr><td>TPS 刷宝射击</td><td>第三人称射击承接角色露出与战斗爽感，形成刷图、掉落、改枪、Build 的循环。</td></tr>
+                <tr><td>复古朋克世界</td><td>以原子朋克、复古未来主义和多地域朋克主题构建差异化世界。</td></tr>
+                <tr><td>暗黑微恐怪物</td><td>怪物偏肉质、胶质、类人或动物，机械占比受控，强化击杀爽感。</td></tr>
+                <tr><td>智能推荐 Build</td><td>大 Build 库结合智能推荐，兼顾易上手与难精通。</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section id="world">
+          <h2>四、世界观与概念风格</h2>
+          <p class="lead">世界观以原子朋克、复古未来主义和乌托邦崩坏为基础，向美式朋克、中式朋克、欧洲朋克等主题扩展。苏式朋克初期不作为主展示方向，可作为背景或侧面区域存在。</p>
+          <div class="principles">
+            <div class="principle p1"><strong>角色风格化</strong><span>保留二游式角色标签、职业幻想、年代感和外观商业化空间。</span></div>
+            <div class="principle p2"><strong>物件复古朋克</strong><span>冰箱、游乐设施、电视台设备、售票机等现实物件被智能化、智械化、异常化。</span></div>
+            <div class="principle p3"><strong>世界反乌托邦</strong><span>公共娱乐、宣传、度假、家庭消费等安全意象逐渐腐坏。</span></div>
+            <div class="principle p4"><strong>怪物暗黑微恐</strong><span>以肉质、胶质、类人、动物和智械污染为主体，机械怪比例不宜过高。</span></div>
+          </div>
+          <div class="note">内部艺术口径：表皮明亮，底层腐坏；角色好看，世界不安全。</div>
+          <h3>反派与核心冲突</h3>
+          <p>世界中存在全球最强的 N 个 AI 智能，但真正领导它们的仍然是人类。世界危机并非单纯的智械暴走，而是人类欲望、制度工程和 AI 管理共同导致的乌托邦崩坏。</p>
+        </section>
+
+        <section id="gameplay">
+          <h2>五、核心玩法设计</h2>
+          <p>项目以《遗迹 2》作为战斗与关卡体验的重要参考，采用 TPS 视角为主。TPS 有利于角色身体、服装、动作和外观的持续露出，也更适配二游式角色商业化。</p>
+          <h3>核心循环</h3>
+          <div class="flow">
+            <div class="flow-item"><div class="flow-body">选择角色、职业、武器和推荐 Build。</div></div>
+            <div class="flow-item"><div class="flow-body">进入主题关卡或副本区域。</div></div>
+            <div class="flow-item"><div class="flow-body">通过 TPS 射击、技能模组、道具和增强型大招清理怪群。</div></div>
+            <div class="flow-item"><div class="flow-body">遭遇精英怪、随机事件、地图 Buff 或掉落节点。</div></div>
+            <div class="flow-item"><div class="flow-body">挑战现实物件异常化 Boss，获得暗黑式掉落并优化 Build。</div></div>
+          </div>
+          <h3>上手与深度</h3>
+          <p>项目坚持“易上手，难精通”。新手阶段提供默认流派，中期提供智能推荐搭配，深度阶段开放自由构筑。AI 分析能力可用于词条理解、装备评分、流派推荐和副本适配建议。</p>
+        </section>
+
+        <section id="build">
+          <h2>六、武器、职业与 Build 系统</h2>
+          <p class="lead">武器设计以真实武器为基础，进行复古朋克演绎。角色属于职业大类，职业适配推荐武器，但不完全限制玩家选择。</p>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>流派</th><th>定位</th><th>初步设计方向</th></tr></thead>
+              <tbody>
+                <tr><td>突击步枪流</td><td>中庸稳定</td><td>以 M4、AK 等典型原型为基础，适合作为默认和新手流派。</td></tr>
+                <tr><td>喷子流</td><td>近距离爆发</td><td>弹丸散布、低射速、低弹匣，可扩展独头弹、燃烧弹、鸟弹、鹿弹等。</td></tr>
+                <tr><td>冲锋流</td><td>高射速近距离</td><td>强调移动压制、贴脸输出和连杀节奏。</td></tr>
+                <tr><td>射手 / 狙击流</td><td>远程精确</td><td>强调弱点打击、精英处理和 Boss 阶段输出。</td></tr>
+                <tr><td>召唤流</td><td>机器人联动射击</td><td>通过机器人、炮台、无人机等形成协同作战。</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <h3>技能模组与状态</h3>
+          <div class="grid-3">
+            <div class="card"><h4>投掷类</h4><p>爆发、控制、区域封锁。</p></div>
+            <div class="card"><h4>Buff 类</h4><p>强化射击、换弹、移动、生存。</p></div>
+            <div class="card"><h4>机动类</h4><p>位移、闪避、脱战、追击。</p></div>
+          </div>
+          <p>Debuff 初步包括流血、燃烧、感电、中毒。元素反应可以考虑，但不宜过度数值化，应保持直观可感知。</p>
+        </section>
+
+        <section id="content">
+          <h2>七、内容规划</h2>
+          <div class="grid-2">
+            <div class="card"><h3>怪物设计</h3><p>怪物优先服务击杀爽感和暗黑式掉落可信度，方向包括肉质、胶质、类人、动物、现实物件与生物组织融合、智械污染导致的畸变。</p></div>
+            <div class="card"><h3>Boss 设计</h3><p>Boss 采用现实物件异常化原则，例如智械化冰箱、失控游乐设施、异常电视主播、清洁机器人集群、乐园吉祥物等。</p></div>
+          </div>
+          <h3>关卡 Demo 方向</h3>
+          <div class="grid-2">
+            <div class="card"><h4>朋克主题乐园</h4><p>天然具有关卡结构、视觉辨识度和首曝传播力，可呈现明亮表皮下的腐坏。</p></div>
+            <div class="card"><h4>电视台</h4><p>适合作为宣传主阵地，展示世界观、AI 管理、社会控制和舆论包装。</p></div>
+            <div class="card"><h4>度假小镇</h4><p>与世界观关键事件绑定，兼具生活感和危机感。</p></div>
+            <div class="card"><h4>微缩小镇</h4><p>展示人的气息、日常空间和异常尺度变化。</p></div>
+          </div>
+        </section>
+
+        <section id="longterm">
+          <h2>八、终局与长线运营</h2>
+          <p class="lead">项目希望形成具备长尾寿命的终局结构：初始版本提供 100 小时以上有效内容，终局系统支撑 500 小时以上长尾追求。</p>
+          <div class="grid-3">
+            <div class="card"><h3>终局结构</h3><p>随机地图、地图 Buff 随机、掉落赌博感、词条追求、多角色养成驱动和社交展示钩子。</p></div>
+            <div class="card"><h3>单局节奏</h3><p>单局约 20 分钟，以 5 分钟为一个小节，并支持中途保存，适配移动端碎片化游玩。</p></div>
+            <div class="card"><h3>长线更新</h3><p>新角色、新地图、新剧情、新 Boss、新武器、新职业分支和新终局规则。</p></div>
+          </div>
+        </section>
+
+        <section id="business">
+          <h2>九、商业化设计</h2>
+          <p>商业化应以角色厨力、外观、武器外观和轻量数值为主。当前不建议重度依赖传统二游的强命座、强专武模式，以免破坏刷宝游戏中装备掉落和自由构筑的公平感。</p>
+          <div class="quote">玩家因为角色而进入，因为射击和掉落而留下，因为 Build 和终局而长期游玩，因为外观和表达而付费。</div>
+          <div class="grid-2">
+            <div class="card"><h3>可商业化内容</h3><ul><li>角色外观、武器外观、主题套装。</li><li>职业幻想装扮、特效外观。</li><li>轻量成长便利、赛季通行证、收藏展示内容。</li></ul></div>
+            <div class="card"><h3>商业化边界</h3><ul><li>避免强数值压倒刷宝循环。</li><li>避免强命座、强专武造成口碑风险。</li><li>优先让付费服务表达，而不是替代刷图追求。</li></ul></div>
+          </div>
+        </section>
+
+        <section id="pv">
+          <h2>十、首曝 PV 方向</h2>
+          <p class="lead">首曝 PV 的核心任务是建立项目定义、产品品质、角色厨力、战斗爽感和 Build 想象。</p>
+          <div class="flow">
+            <div class="flow-item"><div class="flow-body">主角团登场，建立角色标签。</div></div>
+            <div class="flow-item"><div class="flow-body">危机出现，呈现智械危机或乌托邦崩坏。</div></div>
+            <div class="flow-item"><div class="flow-body">切换战斗形态、装备和武器，展示 TPS 角色露出。</div></div>
+            <div class="flow-item"><div class="flow-body">重点展示武器改装和刷怪爽感。</div></div>
+            <div class="flow-item"><div class="flow-body">Boss 战、暗黑式掉宝、推荐装配和多场景混剪。</div></div>
+          </div>
+        </section>
+
+        <section id="team">
+          <h2>十一、团队核心能力需求</h2>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>能力方向</th><th>要求</th></tr></thead>
+              <tbody>
+                <tr><td>概念与世界观</td><td>建立复古朋克、暗黑微恐和风格化角色融合的稳定口径。</td></tr>
+                <tr><td>角色设计</td><td>完成高标签角色的人设、形象、剧情故事和商业化表达。</td></tr>
+                <tr><td>射击刷图爽感</td><td>设计枪械、命中反馈、怪物死亡、关卡节奏和 Boss 机制。</td></tr>
+                <tr><td>数值 Build</td><td>设计掉落、词条、技能、成长系统和终局循环。</td></tr>
+                <tr><td>商业化</td><td>围绕角色、外观和武器表达设计低反感度付费内容。</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section id="risk">
+          <h2>十二、关键风险与验证计划</h2>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>风险</th><th>说明</th><th>验证方向</th></tr></thead>
+              <tbody>
+                <tr><td>移动端刷宝需求不确定</td><td>移动端玩家是否愿意长期重复刷图仍需验证。</td><td>用研、买量测试、竞品观察。</td></tr>
+                <tr><td>二次元与刷宝融合风险</td><td>纯二游表达可能削弱暗黑掉落和击杀爽感。</td><td>以“风格化角色 + 暗黑微恐世界”做概念验证。</td></tr>
+                <tr><td>TPS 枪感不足</td><td>TPS 有利于角色露出，但枪感可能弱于 FPS。</td><td>验证开镜、命中、换弹、受击和死亡反馈。</td></tr>
+                <tr><td>Build 复杂度过高</td><td>大 Build 库容易造成上手门槛。</td><td>默认流派、智能推荐、阶段化解锁。</td></tr>
+                <tr><td>美术融合失败</td><td>二游角色、暗黑微恐和复古朋克可能变成拼贴。</td><td>先建立统一艺术口径和一张 Demo 场景。</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="note">最小验证闭环：一名高标签角色、一类武器流派、一张主题乐园或电视台关卡、一套基础掉落与 Build、一个现实物件异常化 Boss、一段 60-90 秒核心体验视频或可交互 Demo。</div>
+        </section>
+
+        <section id="decision">
+          <h2>十三、立项建议</h2>
+          <p>基于当前内容，SPVE 具备继续推进立项论证的价值，但不建议直接进入完整产线投入。更合理的方式是进入概念验证阶段，围绕“风格化暗黑朋克 TPS 刷宝”建立最小闭环。</p>
+          <div class="grid-2">
+            <div class="card"><h3>判断</h3><ul><li>方向价值：成立。</li><li>差异化：有潜力。</li><li>主要不确定性：移动端需求、TPS 枪感、Build 复杂度、美术融合和商业化边界。</li></ul></div>
+            <div class="card"><h3>建议</h3><p>项目可进入早期概念验证阶段。验证重点应聚焦于“风格化角色是否能带动暗黑微恐刷宝射击成立”，以及“移动端 TPS 刷图 + 掉落 Build 是否具备足够长期吸引力”。</p></div>
+          </div>
+        </section>
+
+        <div class="footer">基于 SPVE 既有脑暴、立项 HTML 与飞书模板读取结果整理 · ProjectSPVE</div>
+      </main>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,6 +1,13 @@
 # WorkBuddy local state
 .workbuddy/
 
+# Lark / Feishu local auth & slide state
+.lark-auth/
+.lark-slides/
+
+# Agent local learnings
+.learnings/
+
 # OS/editor noise
 .DS_Store
 Thumbs.db
