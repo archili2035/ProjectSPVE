@@ -132,6 +132,47 @@
       font-weight: 500;
     }
 
+    .archive {
+      margin-top: 12px;
+    }
+
+    .archive summary {
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      color: var(--text-secondary);
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--divider);
+      cursor: pointer;
+      list-style: none;
+      user-select: none;
+    }
+
+    .archive summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .archive summary::before {
+      content: "▸ ";
+    }
+
+    .archive[open] summary::before {
+      content: "▾ ";
+    }
+
+    .archive .card-list {
+      margin-top: 12px;
+    }
+
+    .archive .card {
+      opacity: 0.78;
+    }
+
+    .archive .card:hover {
+      opacity: 1;
+    }
+
     .repos-link {
       font-size: 13px;
       color: var(--text-secondary);
@@ -170,20 +211,6 @@
           <div class="card-body">
             <div class="card-title">Project Looter Shooter 立项书网页版</div>
             <div class="card-meta"><span class="tag">PPT转网页</span><span class="tag">刷宝射击</span><span class="tag">AI Native</span>方向论证、竞品数据、核心设计、团队范围与研发节奏</div>
-          </div>
-        </a>
-        <a class="card" href="spve_formal_project_proposal.html">
-          <div class="card-icon">PR</div>
-          <div class="card-body">
-            <div class="card-title">SPVE 项目立项书（正式整理版）</div>
-            <div class="card-meta"><span class="tag">正式版</span><span class="tag">立项书</span><span class="tag">验证计划</span>项目摘要、品类机会、核心设计、商业化、风险与立项建议</div>
-          </div>
-        </a>
-        <a class="card" href="spve_project_proposal.html">
-          <div class="card-icon">SP</div>
-          <div class="card-body">
-            <div class="card-title">SPVE 立项书：风格化暗黑朋克刷宝射击</div>
-            <div class="card-meta"><span class="tag">立项书</span><span class="tag">PVE</span><span class="tag">TPS</span>世界观、玩法、Build、商业化与验证问题</div>
           </div>
         </a>
       </div>
@@ -256,6 +283,26 @@
         </a>
       </div>
     </div>
+
+    <details class="archive section">
+      <summary>历史归档 · 立项书旧版</summary>
+      <div class="card-list">
+        <a class="card" href="spve_formal_project_proposal.html">
+          <div class="card-icon">PR</div>
+          <div class="card-body">
+            <div class="card-title">SPVE 项目立项书（正式整理版）</div>
+            <div class="card-meta"><span class="tag">正式版</span><span class="tag">立项书</span><span class="tag">验证计划</span>项目摘要、品类机会、核心设计、商业化、风险与立项建议</div>
+          </div>
+        </a>
+        <a class="card" href="spve_project_proposal.html">
+          <div class="card-icon">SP</div>
+          <div class="card-body">
+            <div class="card-title">SPVE 立项书：风格化暗黑朋克刷宝射击</div>
+            <div class="card-meta"><span class="tag">立项书</span><span class="tag">PVE</span><span class="tag">TPS</span>世界观、玩法、Build、商业化与验证问题</div>
+          </div>
+        </a>
+      </div>
+    </details>
 
     <div class="repos-link">
       方案文档仓库：<a href="https://github.com/archili2035/ProjectSPVE" target="_blank" rel="noopener">github.com/archili2035/ProjectSPVE</a>

@@ -1,453 +1,118 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Project Looter Shooter 立项书 · PPT逐字转译版</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Project Looter Shooter 立项书 · 语义结构转译版</title>
   <style>
     :root {
-      --bg:#080a0e; --panel:#10141b; --panel-2:#151a23; --text:#f4f1ea; --muted:#aeb5c2; --dim:#748091;
+      --bg:#080a0e; --panel:#11161f; --panel2:#171d28; --text:#f4f1ea; --muted:#adb5c2; --dim:#747e8e;
       --line:rgba(255,255,255,.12); --red:#c7543a; --gold:#d8ab5f; --blue:#548bb6; --green:#5b9775;
+      --red-soft:rgba(199,84,58,.14); --gold-soft:rgba(216,171,95,.12); --blue-soft:rgba(84,139,182,.13); --green-soft:rgba(91,151,117,.13);
       --max:1180px;
     }
-    *{box-sizing:border-box} html{scroll-behavior:smooth} body{margin:0;background:radial-gradient(circle at 78% 8%, rgba(199,84,58,.18), transparent 34%),radial-gradient(circle at 18% 28%, rgba(84,139,182,.14), transparent 32%),linear-gradient(180deg,#090b10 0%,#080a0e 48%,#0d1017 100%);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;line-height:1.68}
+    *{box-sizing:border-box} html{scroll-behavior:smooth} body{margin:0;background:radial-gradient(circle at 78% 8%,rgba(199,84,58,.18),transparent 34%),radial-gradient(circle at 18% 28%,rgba(84,139,182,.14),transparent 32%),linear-gradient(180deg,#090b10 0%,#080a0e 48%,#0d1017 100%);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;line-height:1.68}
     a{color:inherit} .page{max-width:var(--max);margin:0 auto;padding:32px 24px 72px}
     .topbar{display:flex;justify-content:space-between;gap:18px;align-items:center;color:var(--muted);font-size:12px;letter-spacing:.08em;text-transform:uppercase;padding:8px 0 24px} .topbar a{text-decoration:none;color:var(--muted)} .topbar a:hover{color:var(--text)}
     .hero{display:grid;grid-template-columns:minmax(0,1fr) minmax(340px,.86fr);gap:28px;align-items:stretch;margin:18px 0 34px}
     .hero-copy{position:relative;min-height:430px;padding:clamp(28px,5vw,56px);border:1px solid var(--line);border-radius:30px;background:linear-gradient(135deg,rgba(255,255,255,.09),rgba(255,255,255,.035)),linear-gradient(180deg,rgba(199,84,58,.10),rgba(84,139,182,.05));overflow:hidden}
     .hero-copy:after{content:"";position:absolute;right:-90px;bottom:-110px;width:250px;height:250px;border-radius:50%;border:34px solid rgba(216,171,95,.10)}
     .eyebrow{display:inline-flex;gap:8px;align-items:center;color:var(--gold);font-size:12px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;margin-bottom:28px} .eyebrow:before{content:"";width:34px;height:1px;background:var(--gold)}
-    h1{margin:0;max-width:760px;font-size:clamp(38px,6.2vw,70px);line-height:.98;letter-spacing:-.055em;font-weight:860}
-    .subtitle{margin:28px 0 0;max-width:650px;font-size:18px;color:#d9dde5} .hero-note{margin-top:26px;color:var(--dim);font-size:13px}
+    h1{margin:0;max-width:760px;font-size:clamp(38px,6.2vw,70px);line-height:.98;letter-spacing:-.055em;font-weight:860} .subtitle{margin:28px 0 0;max-width:650px;font-size:18px;color:#d9dde5} .hero-note{margin-top:26px;color:var(--dim);font-size:13px}
     .hero-img{border:1px solid var(--line);border-radius:30px;overflow:hidden;background:#0b0d12;min-height:430px} .hero-img img{width:100%;height:100%;object-fit:cover;display:block;opacity:.9}
     .layout{display:grid;grid-template-columns:220px minmax(0,1fr);gap:32px;align-items:start} .toc{position:sticky;top:22px;padding:18px;border:1px solid var(--line);border-radius:22px;background:rgba(16,20,27,.82);backdrop-filter:blur(18px)} .toc-title{color:var(--dim);font-size:11px;letter-spacing:.12em;text-transform:uppercase;margin-bottom:12px} .toc a{display:block;text-decoration:none;color:var(--muted);font-size:13px;padding:7px 0;border-bottom:1px solid rgba(255,255,255,.06)} .toc a:hover{color:var(--text)}
-    .content-section{margin-bottom:28px;padding:clamp(22px,3.8vw,36px);border:1px solid var(--line);border-radius:28px;background:rgba(16,20,27,.76);box-shadow:0 24px 70px rgba(0,0,0,.22)} .section-head{margin-bottom:22px} .section-kicker{color:var(--gold);font-size:12px;font-weight:800;letter-spacing:.12em;text-transform:uppercase} h2{margin:4px 0 0;font-size:clamp(26px,3.3vw,40px);line-height:1.08;letter-spacing:-.035em}
-    .source-block{position:relative;display:grid;grid-template-columns:1fr;gap:18px;padding:22px;border:1px solid rgba(255,255,255,.10);border-radius:24px;background:rgba(255,255,255,.045);margin-top:16px} .source-block.has-media{grid-template-columns:minmax(0,.86fr) minmax(280px,.64fr)} .slide-marker{position:absolute;right:18px;top:14px;color:var(--dim);font-size:11px;letter-spacing:.12em;text-transform:uppercase}
-    .source-copy{max-width:100%;padding-right:42px} .source-copy h3{margin:0 0 12px;font-size:24px;line-height:1.18;letter-spacing:-.02em} .source-copy p{margin:8px 0 0;color:var(--muted);font-size:14px} .source-copy .lead-copy{font-size:16px;color:#d9dde5;margin-bottom:14px} .mini-label{display:inline-flex;margin:7px 8px 0 0;padding:4px 9px;border:1px solid rgba(255,255,255,.12);border-radius:999px;background:rgba(255,255,255,.06);color:#e8edf6;font-size:12px;font-weight:700} .callout-text{padding:12px 14px!important;border-radius:14px;background:rgba(216,171,95,.10);border:1px solid rgba(216,171,95,.24);color:#f4e3c3!important;font-weight:700}
-    .media-strip{border-radius:20px;overflow:hidden;border:1px solid rgba(255,255,255,.12);background:rgba(0,0,0,.18)} .media-strip img{display:block;width:100%;height:100%;max-height:430px;object-fit:cover}
+    section{margin-bottom:28px;padding:clamp(22px,3.8vw,36px);border:1px solid var(--line);border-radius:28px;background:rgba(16,20,27,.76);box-shadow:0 24px 70px rgba(0,0,0,.22)} .section-head{display:flex;justify-content:space-between;gap:24px;margin-bottom:22px} .section-kicker{color:var(--gold);font-size:12px;font-weight:800;letter-spacing:.12em;text-transform:uppercase} h2{margin:4px 0 0;font-size:clamp(26px,3.3vw,40px);line-height:1.08;letter-spacing:-.035em} .section-note{max-width:420px;color:var(--muted);font-size:14px}
+    h3{margin:0 0 12px;font-size:25px;line-height:1.18;letter-spacing:-.02em} h4{margin:0 0 8px;font-size:16px} p{margin:0;color:var(--muted)} p+p{margin-top:8px} .lead{font-size:16px;color:#d9dde5;margin-bottom:18px} .callout{padding:14px 16px;border-radius:16px;background:var(--gold-soft);border:1px solid rgba(216,171,95,.28);color:#f4e3c3;font-weight:750}
+    .grid{display:grid;gap:14px} .two{grid-template-columns:repeat(2,minmax(0,1fr))} .three{grid-template-columns:repeat(3,minmax(0,1fr))} .four{grid-template-columns:repeat(4,minmax(0,1fr))}
+    .card,.pair,.metric{border:1px solid rgba(255,255,255,.1);border-radius:18px;background:rgba(255,255,255,.055);padding:16px} .card.red,.pair.red,.metric.red{background:var(--red-soft);border-color:rgba(199,84,58,.32)} .card.gold,.pair.gold,.metric.gold{background:var(--gold-soft);border-color:rgba(216,171,95,.30)} .card.blue,.pair.blue,.metric.blue{background:var(--blue-soft);border-color:rgba(84,139,182,.32)} .card.green,.pair.green,.metric.green{background:var(--green-soft);border-color:rgba(91,151,117,.30)}
+    .pair b{display:block;color:var(--text);font-size:15px} .pair span{display:block;color:var(--muted);font-size:13px;margin-top:5px} .metric{min-width:0} .metric strong{display:block;font-size:clamp(20px,2.2vw,28px);line-height:1.08;color:var(--text);letter-spacing:-.02em;overflow-wrap:anywhere;word-break:break-word} .metric span{display:block;color:var(--muted);font-size:12px;margin-top:8px}
+    .chips{display:flex;flex-wrap:wrap;gap:9px;margin:12px 0} .chip{display:inline-flex;align-items:center;padding:5px 10px;border-radius:999px;border:1px solid rgba(255,255,255,.14);background:rgba(255,255,255,.07);font-size:12px;font-weight:750;color:#e8edf6}
+    .compare{display:grid;grid-template-columns:1fr 1fr;gap:16px} .compare-col{border-radius:22px;padding:18px;border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.045)} .compare-col h4{font-size:20px}
+    .kv-list{display:grid;gap:10px;margin-top:14px} .kv{display:grid;grid-template-columns:72px 1fr;gap:10px;align-items:start;padding:10px;border-radius:14px;background:rgba(255,255,255,.045)} .kv b{color:var(--gold)} .kv span{color:var(--muted)}
+    .table-like{border:1px solid rgba(255,255,255,.1);border-radius:18px;overflow:hidden;background:rgba(255,255,255,.035)} .thead,.trow{display:grid;grid-template-columns:repeat(var(--cols),minmax(0,1fr))} .cell{padding:12px 14px;border-bottom:1px solid rgba(255,255,255,.08);color:var(--muted);font-size:13px} .cell.head{color:var(--text);background:rgba(255,255,255,.07);font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase} .trow:last-child .cell{border-bottom:0} .cell:first-child:not(.head){color:var(--text);font-weight:800}
+    .flywheel{display:grid;grid-template-columns:repeat(4,1fr);gap:12px} .node{position:relative;padding:16px;border-radius:18px;background:rgba(255,255,255,.055);border:1px solid rgba(255,255,255,.1)} .node small{color:var(--gold);font-weight:800} .node b{display:block;margin-top:4px} .node p{font-size:13px;margin-top:6px}
+    .split{display:grid;grid-template-columns:minmax(0,1fr) minmax(300px,.88fr);gap:18px} .media-panel{border-radius:22px;overflow:hidden;border:1px solid rgba(255,255,255,.12);background:rgba(0,0,0,.18)} .media-panel img{width:100%;height:100%;object-fit:cover;display:block} .source-note{color:var(--dim);font-size:11px;margin-top:8px}
+    .timeline{display:grid;gap:10px} .phase{display:grid;grid-template-columns:92px 110px 150px 1fr;gap:10px;align-items:center;padding:12px;border-radius:16px;background:rgba(255,255,255,.045);border:1px solid rgba(255,255,255,.1)} .phase b{color:var(--gold)} .phase span{color:var(--text);font-weight:800} .phase p{font-size:13px}
     .source-tip{margin:0 0 18px;padding:14px 18px;border-radius:18px;background:rgba(84,139,182,.10);border:1px solid rgba(84,139,182,.25);color:var(--muted);font-size:13px}
-    @media(max-width:920px){.hero,.layout,.source-block.has-media{grid-template-columns:1fr}.toc{position:static}.hero-img{min-height:280px}} @media(max-width:560px){.page{padding:22px 14px 54px}.content-section,.hero-copy,.source-block{border-radius:22px;padding:20px}.source-copy{padding-right:0}}
+    @media(max-width:980px){.hero,.layout,.compare,.split{grid-template-columns:1fr}.toc{position:static}.hero-img{min-height:280px}.four,.three,.two,.flywheel{grid-template-columns:1fr 1fr}}
+    @media(max-width:720px){.page{padding:22px 14px 54px}section,.hero-copy{border-radius:22px;padding:20px}.section-head{display:block}.section-note{margin-top:10px}.four,.three,.two,.flywheel{grid-template-columns:1fr}.thead{display:none}.trow{display:block;padding:8px 0;border-bottom:1px solid rgba(255,255,255,.08)}.trow:last-child{border-bottom:0}.cell{display:grid;grid-template-columns:92px 1fr;gap:10px;border-bottom:0;padding:8px 12px}.cell::before{content:attr(data-label);color:var(--gold);font-size:11px;font-weight:800;letter-spacing:.06em}.phase{grid-template-columns:1fr}}
   </style>
 </head>
 <body>
-  <main class="page">
-    <div class="topbar"><a href="index.html">ProjectSPVE Docs</a><span>PPT逐字转译版 · 2026-08-24</span></div>
-    <header class="hero">
-      <div class="hero-copy">
-        <div class="eyebrow">Literal HTML Translation</div>
-        <h1>二次元原子朋克 TPS 多平台刷宝射击</h1>
-        <p class="subtitle">角色驱动 · PVE 刷宝 · 原子朋克 · Build 长线</p>
-        <p class="hero-note">本页以 PPTX 为唯一源文件，删除页脚与备注残留；正文文字保持原文，仅根据 HTML 阅读方式进行分组、层级与版式优化。</p>
-      </div>
-      <div class="hero-img"><img src="assets/project_looter_shooter/image25.png" alt="PPT 原始封面图"></div>
-    </header>
-    <div class="layout">
-      <nav class="toc" aria-label="页面目录"><div class="toc-title">Contents</div><a href="#cover">封面</a>
-<a href="#pvp-pve">射击游戏 PVP 与 PVE 优劣分析</a>
-<a href="#competitors">PVE 刷宝竞品分析</a>
-<a href="#audience">目标用户分层</a>
-<a href="#core-design">游戏核心设计</a>
-<a href="#world-style">世界观与概念风格</a>
-<a href="#scope-team">项目、团队与研发周期估算</a>
-<a href="#ai-native">AI Native 团队建设思考</a>
-<a href="#summary">总结</a></nav>
-      <div>
-        <p class="source-tip">说明：以下内容按 HTML 版式重新分组，但每个正文文本块均来自 PPT 原文；页脚、页码、备注和模板残留已删除。</p>
-        <section id="cover" class="content-section">
-      <div class="section-head">
-        <div class="section-kicker">COVER</div>
-        <h2>封面</h2>
-      </div>
-      <article class="source-block has-media" data-slide="01">
-<div class="slide-marker">PPT 01</div>
-<div class="media-strip">
-<img src="assets/project_looter_shooter/image25.png" alt="PPT第01页原图素材">
-</div>
-<div class="source-copy">
-<h3>二次元原子朋克 TPS 多平台刷宝射击</h3>
-<p class="lead-copy">角色驱动 · PVE 刷宝 · 原子朋克 · Build 长线</p>
-</div></article>
-    </section><section id="pvp-pve" class="content-section">
-      <div class="section-head">
-        <div class="section-kicker">PVP PVE</div>
-        <h2>射击游戏 PVP 与 PVE 优劣分析</h2>
-      </div>
-      <article class="source-block" data-slide="02">
-<div class="slide-marker">PPT 02</div>
-<div class="source-copy">
-<h3>一、射击游戏PVP与PVE优劣分析</h3>
-<p class="lead-copy">PVP 射击是强竞技红海；PVE 刷宝更适合内容、数值、掉落、角色养成和版本更新形成长期目标。</p>
-<div class="mini-label">为什么不是 PVP 射击</div>
-<div class="mini-label">为什么选择 PVE 刷宝构筑</div>
-<p>核心竞争点：玩法新颖度、基础操作品质、匹配质量、竞技环境、反外挂、玩家规模、直播与社区生态。</p>
-<p>刷宝类游戏有长期价值，并拥有稳定、明确的玩家群体。</p>
-<div class="mini-label">转向</div>
-<div class="mini-label">新兴正在扩量的玩法</div>
-<div class="mini-label">角色收集与养成</div>
-<div class="mini-label">枪械和装备掉落</div>
-<div class="mini-label">天时</div>
-<div class="mini-label">角色厨力、职业幻想、长期投入</div>
-<div class="mini-label">暗黑式掉宝与词条追求</div>
-<div class="mini-label">高品质的管线与强运营能力</div>
-<div class="mini-label">Build 构筑实验</div>
-<div class="mini-label">副本 / Boss / 高难</div>
-<div class="mini-label">地利</div>
-<div class="mini-label">流派组合、装备搭配、策略深度</div>
-<div class="mini-label">内容更新与挑战目标</div>
-<div class="mini-label">长期的人材储备</div>
-<div class="mini-label">赛季式更新</div>
-<div class="mini-label">人和</div>
-<div class="mini-label">版本节奏驱动长期回流</div>
-<p class="callout-text">当前爆破、MP、大逃杀、搜打撤基本已经失去天时，需要等待下一波创新玩法带来的增量。</p>
-<p class="callout-text">结论：PVE 更适合作为较低风险、建立长线品类能力的产品形态。</p>
-</div></article>
-    </section><section id="competitors" class="content-section">
-      <div class="section-head">
-        <div class="section-kicker">COMPETITORS</div>
-        <h2>PVE 刷宝竞品分析</h2>
-      </div>
-      <article class="source-block" data-slide="03">
-<div class="slide-marker">PPT 03</div>
-<div class="source-copy">
-<h3>二、PVE 刷宝竞品分析</h3>
-<p class="lead-copy">按三层证据组织：最接近的商业样本、海外长线生命力、二游/PVE 关注度样本。</p>
-<p class="callout-text">结论：以《逆战：未来》验证国内商业化最接近的机会，以 D2 / Warframe / Remnant2 验证射击刷宝长线生命力，再用二游/PVE PV 热度证明市场关注。</p>
-<div class="mini-label">近端核心参考</div>
-<div class="mini-label">海外长线标杆</div>
-<div class="mini-label">关注度样本</div>
-<div class="mini-label">NZ</div>
-<div class="mini-label">D2</div>
-<div class="mini-label">PV</div>
-<p>逆战：未来</p>
-<div class="mini-label">二重螺旋</div>
-<div class="mini-label">Destiny 2</div>
-<p>首曝实机 PV：5小时150万+；后续约350万；测试PV约430万。</p>
-<p>2017 上线；Steam 峰值约316k；上线初期100万+并发。</p>
-<p>三端互通 + PVE 核心 + 赛季制 + 不卖强度数值。</p>
-<div class="mini-label">Warframe</div>
-<div class="mini-label">WF</div>
-<div class="mini-label">逆向坍塌:F</div>
-<p>80M+注册；2019收入约1.75亿美元。</p>
-<div class="mini-label">预约</div>
-<div class="mini-label">上线两天</div>
-<p>B站游戏中心：首曝PV&amp;实机演示约154万+播放、1400+评论。</p>
-<div class="mini-label">2000万+</div>
-<div class="mini-label">1000万+</div>
-<div class="mini-label">Remnant II</div>
-<div class="mini-label">R2</div>
-<div class="mini-label">3个月移动</div>
-<div class="mini-label">首年外推</div>
-<p>200万+销量；净销售7亿瑞典克朗+。</p>
-<p>作用：证明概念曝光具备讨论度。</p>
-<div class="mini-label">约6.26亿</div>
-<div class="mini-label">约12.95亿</div>
-<p>数据口径：官方/财报/平台公开数据优先；播放量与收入估算需标注媒体或第三方来源，不作为最终财务承诺。</p>
-</div></article>
-    </section><section id="audience" class="content-section">
-      <div class="section-head">
-        <div class="section-kicker">AUDIENCE</div>
-        <h2>目标用户分层</h2>
-      </div>
-      <article class="source-block" data-slide="04">
-<div class="slide-marker">PPT 04</div>
-<div class="source-copy">
-<h3>三、目标用户分层</h3>
-<p class="lead-copy">先打穿射击刷宝核心盘，再分别吸收射击玩法玩家与刷宝玩家；泛用户依赖角色、题材和低压 PVE 入口承接。</p>
-<div class="mini-label">射击刷宝玩家</div>
-<div class="mini-label">核心</div>
-<div class="mini-label">用户扩散靶心图</div>
-<p>命运2 / Warframe / 遗迹2 / 逆战未来</p>
-<p>越靠近中心，越应作为 Demo 和早期验证的评价标准。</p>
-<p>首轮验证对象：枪感、掉落、Build 实验、终局追求是否成立。</p>
-<p>泛用户：题材 / 角色 / 低压 PVE</p>
-<p>次核心：射击 + 刷宝</p>
-<div class="mini-label">射击玩法玩家 / 刷宝玩家</div>
-<div class="mini-label">次核心</div>
-<p>和平 / 三角洲 / 瓦 · 流放之路 / 暗黑</p>
-<p>射击玩家看 PVE 内容；刷宝玩家看词条、流派和赛季目标。</p>
-<p>D2 / WF / R2 / NZ</p>
-<div class="mini-label">其他可接受玩法的用户</div>
-<p>和平 / 三角洲 / 瓦 · POE / 暗黑</p>
-<div class="mini-label">泛用户</div>
-<p>角色、题材、美术、低压 PVE、朋友带入</p>
-<p>依赖包装和引导扩量；不作为早期 Demo 硬核标准。</p>
-<p>验证顺序：核心人群口碑 → 次核心转化 → 泛用户扩量</p>
-<div class="mini-label">产品策略</div>
-<p>核心定义体验标准；次核心决定扩量空间；泛用户决定包装与引导上限。</p>
-</div></article>
-    </section><section id="core-design" class="content-section">
-      <div class="section-head">
-        <div class="section-kicker">CORE DESIGN</div>
-        <h2>游戏核心设计</h2>
-      </div>
-      <article class="source-block" data-slide="05">
-<div class="slide-marker">PPT 05</div>
-<div class="source-copy">
-<h3>四、游戏核心设计</h3>
-<p class="lead-copy">机会来自 PVE 刷宝循环、二游角色资产和移动端低压力体验的交集。</p>
-<div class="mini-label">PVE 刷宝循环</div>
-<div class="mini-label">二游角色优势</div>
-<div class="mini-label">移动端验证机会</div>
-<p>关卡、击杀、掉落、构筑、挑战更高难度，天然支撑长线游玩。</p>
-<p>角色标签、剧情包装和长期运营成熟，场景可部分偏向写实元素（明日方舟终末地）。</p>
-<p>低精力、碎片化、重复刷图可能适配移动端；PC 作为品质展示。</p>
-</div></article>
-<article class="source-block" data-slide="06">
-<div class="slide-marker">PPT 06</div>
-<div class="source-copy">
-<h3>四、游戏核心设计</h3>
-<p class="lead-copy">用户为什么进来、为什么留下、为什么长期玩。</p>
-<div class="mini-label">角色吸引</div>
-<div class="mini-label">射击爽感</div>
-<div class="mini-label">强标签、人设联结、外观价值</div>
-<p>TPS 手感、刷怪反馈、Boss 压迫</p>
-<div class="mini-label">产品飞轮</div>
-<p>角色吸引 → 射击爽感 → 掉落 Build → 长期留存</p>
-<div class="mini-label">长期留存</div>
-<div class="mini-label">掉落 Build</div>
-<div class="mini-label">终局随机、赛季更新、社交讨论</div>
-<div class="mini-label">装备词条、改枪、职业流派</div>
-<div class="mini-label">世界观记忆点反哺传播与买量素材</div>
-</div></article>
-<article class="source-block" data-slide="07">
-<div class="slide-marker">PPT 07</div>
-<div class="source-copy">
-<h3>四、游戏核心设计</h3>
-<p class="lead-copy">定义为：二次元原子朋克 TPS 多平台刷宝射击</p>
-<div class="mini-label">卖点</div>
-<div class="mini-label">说明</div>
-<div class="mini-label">角色驱动</div>
-<p>年代感、美感、个性与 Cos 欲望，是情感连接和外观商业化核心。</p>
-<div class="mini-label">TPS 刷宝射击</div>
-<p>第三人称承接角色露出与战斗爽感，形成刷图、掉落、改枪循环。</p>
-<div class="mini-label">复古朋克世界</div>
-<p>原子朋克、复古未来主义、多地域朋克主题构成差异化。</p>
-<div class="mini-label">暗黑微恐怪物</div>
-<p>肉质、胶质、类人或动物，机械占比受控，强化击杀爽感。</p>
-<div class="mini-label">智能推荐 Build</div>
-<p>大 Build 库结合推荐系统，兼顾易上手与难精通。</p>
-</div></article>
-<article class="source-block" data-slide="08">
-<div class="slide-marker">PPT 08</div>
-<div class="source-copy">
-<h3>四、游戏核心设计</h3>
-<p class="lead-copy">流派设计：职业适配推荐武器但不完全限制，保留玩家自由构筑空间。</p>
-<div class="mini-label">流派</div>
-<div class="mini-label">定位</div>
-<div class="mini-label">设计方向</div>
-<div class="mini-label">突击步枪</div>
-<div class="mini-label">稳定默认</div>
-<p>M4、AK 等原型，适合作为新手基准流派。</p>
-<div class="mini-label">喷子流</div>
-<div class="mini-label">近距爆发</div>
-<p>弹丸散布、低射速、低弹匣，可扩展多种弹型。</p>
-<div class="mini-label">冲锋流</div>
-<div class="mini-label">高速近战</div>
-<p>移动压制、贴脸输出和连杀节奏。</p>
-<div class="mini-label">射手 / 狙击</div>
-<div class="mini-label">远程精确</div>
-<p>弱点打击、精英处理和 Boss 阶段输出。</p>
-<div class="mini-label">召唤流</div>
-<div class="mini-label">联动射击</div>
-<p>机器人、炮台、无人机形成协同作战。</p>
-<p>技能模组：投掷类 / Buff 类 / 机动类；状态：流血、燃烧、感电、中毒。</p>
-</div></article>
-<article class="source-block" data-slide="09">
-<div class="slide-marker">PPT 09</div>
-<div class="source-copy">
-<h3>四、游戏核心设计</h3>
-<p class="lead-copy">长线运营：用随机、掉落赌博感、多角色养成和社交展示支撑长尾。</p>
-<div class="mini-label">终局结构</div>
-<div class="mini-label">单局节奏</div>
-<div class="mini-label">长线更新</div>
-<p>随机地图、地图 Buff、掉落赌博感、词条追求、多角色养成和社交展示钩子。</p>
-<p>单局约 20 分钟，以 5 分钟为一个小节，并支持中途保存。</p>
-<p>新角色、新地图、新剧情、新 Boss、新武器、新职业分支和新终局规则。</p>
-<p class="callout-text">目标：初始版本 100h+，终局系统支撑 500h+ 长尾追求。</p>
-</div></article>
-<article class="source-block" data-slide="10">
-<div class="slide-marker">PPT 10</div>
-<div class="source-copy">
-<h3>四、游戏核心设计</h3>
-<p class="lead-copy">商业化设计：付费应服务角色和表达，不应替代刷图追求。</p>
-<div class="mini-label">可商业化内容</div>
-<div class="mini-label">商业化边界</div>
-<p>角色外观、武器外观、主题套装、职业幻想装扮、特效外观、轻量成长便利、赛季通行证、收藏展示内容。</p>
-<p>不建议重度依赖强命座、强专武，避免破坏装备掉落、自由构筑和刷宝公平感。</p>
-<p>以《逆战·未来》为主要参考：预计首年流水15亿~25亿左右。</p>
-</div></article>
-    </section><section id="world-style" class="content-section">
-      <div class="section-head">
-        <div class="section-kicker">WORLD STYLE</div>
-        <h2>世界观与概念风格</h2>
-      </div>
-      <article class="source-block has-media" data-slide="11">
-<div class="slide-marker">PPT 11</div>
-<div class="media-strip">
-<img src="assets/project_looter_shooter/image26.jpeg" alt="PPT第11页原图素材">
-</div>
-<div class="source-copy">
-<h3>五、世界观与概念风格</h3>
-<p class="lead-copy">这一页应该成为评审记住项目的风格锚点。</p>
-<div class="mini-label">概念图占位</div>
-<div class="mini-label">角色</div>
-<div class="mini-label">物件</div>
-<div class="mini-label">原子朋克、年代感</div>
-<div class="mini-label">现实设施智械化、异常化</div>
-<div class="mini-label">世界</div>
-<div class="mini-label">怪物</div>
-<div class="mini-label">“梦魇感”、“腐坏空间”</div>
-<div class="mini-label">肉质 / 胶质 / 智械污染</div>
-<p>素材来自网络，仅示意风格：角色：来自重返未来1999场景&amp;怪物：来自波兰艺术家 济斯瓦夫·贝克辛斯基的作品武器：来自原子之心</p>
-</div></article>
-    </section><section id="scope-team" class="content-section">
-      <div class="section-head">
-        <div class="section-kicker">SCOPE TEAM</div>
-        <h2>项目、团队与研发周期估算</h2>
-      </div>
-      <article class="source-block" data-slide="12">
-<div class="slide-marker">PPT 12</div>
-<div class="source-copy">
-<h3>六、项目&amp;团队&amp;研发周期估算</h3>
-<p class="lead-copy">用于估算团队规模、成本与周期：以《遗迹 2》为体量主参考，再按三端互通与角色商业化调整。</p>
-<div class="mini-label">《遗迹 2》体量基准</div>
-<div class="mini-label">SPVE 首发完整版本估算口径</div>
-<p>近年中体量 TPS / PVE / Boss / Build 标杆，适合作为首发体量估算上限。</p>
-<p>不是 Demo 范围；用于反推人力、成本和周期。以下为估算框架，后续可按预算压缩。</p>
-<p>15 名左右可运营角色；每名具备基础皮肤、战斗动作、技能特效和角色标签。</p>
-<p>3~4 个主题区域；至少 1 个强记忆点主场景，承接乐园 / 电视台 / 度假镇等方向。</p>
-<div class="mini-label">角色</div>
-<div class="mini-label">地图</div>
-<div class="mini-label">≈90人</div>
-<div class="mini-label">5世界</div>
-<div class="mini-label">媒体转述参与团队</div>
-<div class="mini-label">主世界与流程结构</div>
-<p>6~8 类核心武器；先覆盖突击、喷子、冲锋、狙击、召唤/装置等代表流派。</p>
-<p>80~120 个装备 / 词条 / 饰品件；支撑 6~8 条可感知流派。</p>
-<div class="mini-label">武器</div>
-<div class="mini-label">Build</div>
-<div class="mini-label">70+武器</div>
-<div class="mini-label">200万+</div>
-<div class="mini-label">长枪 / 手枪 / 近战</div>
-<div class="mini-label">2023Q3 累计销量</div>
-<p>6~8 个 Boss / 大型精英；区分机制 Boss、材料 Boss、剧情 Boss。</p>
-<p>角色外观、武器皮肤、技能特效、通行证样张与收藏展示入口。</p>
-<div class="mini-label">Boss</div>
-<div class="mini-label">商业资产</div>
-<p>补充：主线 20+ 小时，全内容 60~100 小时，财报净销售 7 亿瑞典克朗+。</p>
-<p class="callout-text">估算原则：以遗迹2为主参考，但 SPVE 因三端、F2P、角色商业化，成本结构会向角色 / 美术 / 运营倾斜。</p>
-</div></article>
-<article class="source-block" data-slide="13">
-<div class="slide-marker">PPT 13</div>
-<div class="source-copy">
-<h3>六、项目&amp;团队&amp;研发周期估算</h3>
-<p class="lead-copy">射击、刷宝、二次元角色、美术融合、跨端与商业化能力必须同时成立。</p>
-<div class="mini-label">UE 跨端</div>
-<div class="mini-label">TPS 射击</div>
-<div class="mini-label">PVE 关卡/Boss</div>
-<div class="mini-label">刷宝 Build</div>
-<p>三端互通、性能、包体、输入适配；</p>
-<p>枪感、镜头、命中、换弹、受击反馈；</p>
-<p>主题地图、精英怪、机制 Boss、复刷事件；</p>
-<p>掉落、词条、饰品、流派和难度曲线；长线留存核心。</p>
-<div class="mini-label">角色人设</div>
-<div class="mini-label">风格化 TA</div>
-<div class="mini-label">运营商业化</div>
-<p>二次元角色是版本关注和外观商业化载体；</p>
-<p>角色好看、世界危险、怪物可击杀；</p>
-<p>外观、通行证、收藏展示、买量素材；参考逆战未来低数值干扰方向。</p>
-<div class="mini-label">优先级判断</div>
-<p>射击手感 &gt; Build 掉落 &gt; 角色厨力 &gt; 跨端性能 &gt; 关卡 Boss &gt; 商业化闭环。</p>
-<p>如果核心手感、PVE 内容或 Build 欲望任一项不成立，项目不宜直接进入完整量产。</p>
-</div></article>
-<article class="source-block" data-slide="14">
-<div class="slide-marker">PPT 14</div>
-<div class="source-copy">
-<h3>六、项目&amp;团队&amp;研发周期估算</h3>
-<div class="mini-label">首发量产</div>
-<div class="mini-label">量产准备</div>
-<div class="mini-label">120~150人</div>
-<div class="mini-label">Vertical Slice</div>
-<div class="mini-label">70~100人</div>
-<div class="mini-label">核心 Demo</div>
-<div class="mini-label">30~60人</div>
-<div class="mini-label">概念验证</div>
-<div class="mini-label">15~30人</div>
-<div class="mini-label">8~15人</div>
-<p>扩张原则：概念验证 → Demo → VS → 量产准备 → 首发量产</p>
-</div></article>
-<article class="source-block" data-slide="15">
-<div class="slide-marker">PPT 15</div>
-<div class="source-copy">
-<h3>六、项目&amp;团队&amp;研发周期估算</h3>
-<p class="lead-copy">0~12 个月完成从方向收敛到量产准备，后续进入首发量产。</p>
-<div class="mini-label">P0</div>
-<p>立项书、竞品数据、首发范围、风险清单</p>
-<div class="mini-label">方向收敛</div>
-<div class="mini-label">0~1月</div>
-<div class="mini-label">P1</div>
-<p>枪感、角色灰盒、精英怪、基础掉落反馈</p>
-<div class="mini-label">战斗原型</div>
-<div class="mini-label">1~3月</div>
-<div class="mini-label">P2</div>
-<p>1角色、1关卡、1Boss、2条 Build</p>
-<div class="mini-label">核心 Demo</div>
-<div class="mini-label">3~6月</div>
-<div class="mini-label">P3</div>
-<div class="mini-label">2~3角色、2主题区、商业化样张</div>
-<div class="mini-label">Vertical Slice</div>
-<div class="mini-label">6~9月</div>
-<div class="mini-label">P4</div>
-<div class="mini-label">管线、工具、跨端性能、版本框架</div>
-<div class="mini-label">量产准备</div>
-<div class="mini-label">9~12月</div>
-<div class="mini-label">P5</div>
-<p>多角色、多地图、多Boss、多流派与测试</p>
-<div class="mini-label">首发量产</div>
-<div class="mini-label">12~36月</div>
-</div></article>
-    </section><section id="ai-native" class="content-section">
-      <div class="section-head">
-        <div class="section-kicker">AI NATIVE</div>
-        <h2>AI Native 团队建设思考</h2>
-      </div>
-      <article class="source-block" data-slide="16">
-<div class="slide-marker">PPT 16</div>
-<div class="source-copy">
-<h3>七、AI Native 团队建设思考</h3>
-<p class="lead-copy">新项目应从第一天开始，让数据、讨论、决策和内容生产适配人机协作。</p>
-<div class="mini-label">核心观点</div>
-<div class="mini-label">负责人自上而下推动</div>
-<p>不只是工具，而是工作方式</p>
-<div class="mini-label">新项目从零构建</div>
-<div class="mini-label">PVE 更适合 AI 提效</div>
-<p>从立项阶段定义 AI 友好的数据格式、文档结构和协作标准。</p>
-<p>内容量产、规则组合、版本迭代环节更多，更容易结构化拆分。</p>
-<div class="mini-label">AI 成为讨论必备环节</div>
-<div class="mini-label">持续提高人机合作方式</div>
-<p>竞品、系统、版本方案、反馈归因，都默认进入 AI 辅助讨论。</p>
-<p>数据 AI 友好；问题拆解成框架；决策过程留依据、可追溯。</p>
-</div></article>
-    </section><section id="summary" class="content-section">
-      <div class="section-head">
-        <div class="section-kicker">SUMMARY</div>
-        <h2>总结</h2>
-      </div>
-      <article class="source-block" data-slide="17">
-<div class="slide-marker">PPT 17</div>
-<div class="source-copy">
-<h3>总结</h3>
-<p class="lead-copy">项目价值：射击游戏品类研发，二次元管线，AI Native团队积累。</p>
-<div class="mini-label">射击游戏品类研发</div>
-<div class="mini-label">二次元及角色管线</div>
-<div class="mini-label">AI Native团队积累</div>
-<p>通过该研目积累新一代的射击游戏品类研发团队经验，待有合适玩法机会可把握PVP竞技方向。</p>
-<p>可积累二次元世界构建、角色设计、渲染管线等团队经验，为后续重度游戏的研发积累竞争优势。</p>
-<p>自组建起完全融入人机合作范式，积累研发与设计数据资产，提高生产效能。</p>
-</div></article>
-    </section>
-      </div>
+<main class="page">
+  <div class="topbar"><a href="index.html">ProjectSPVE Docs</a><span>PPT 语义结构转译版 · 2026-08-24</span></div>
+  <header class="hero">
+    <div class="hero-copy">
+      <div class="eyebrow">Semantic HTML Translation</div>
+      <h1>二次元原子朋克 TPS 多平台刷宝射击</h1>
+      <p class="subtitle">角色驱动 · PVE 刷宝 · 原子朋克 · Build 长线</p>
+      <p class="hero-note">本页以 PPTX 为唯一源文件；正文文字保持原文，删除页脚与备注；根据 PPT 中的表格、对比、流程、矩阵关系重建 HTML 版式。</p>
     </div>
-  </main>
+    <div class="hero-img"><img src="assets/project_looter_shooter/image25.png" alt="PPT 原始封面图"></div>
+  </header>
+  <div class="layout">
+    <nav class="toc"><div class="toc-title">Contents</div>
+      <a href="#pvp-pve">PVP 与 PVE</a><a href="#competitors">竞品分析</a><a href="#audience">目标用户</a><a href="#core">核心设计</a><a href="#style">世界观风格</a><a href="#scope">项目与团队</a><a href="#ai">AI Native</a><a href="#summary">总结</a>
+    </nav>
+    <div>
+      <p class="source-tip">说明：此版不再平铺 PPT 文本，而是按 PPT 原语义结构重建。表格在 PC 上显示为表格，在手机上自动折叠为字段卡片，避免横向拖动。</p>
+
+      <section id="pvp-pve">
+        <div class="section-head"><div><div class="section-kicker">01 Strategy</div><h2>一、射击游戏PVP与PVE优劣分析</h2></div><p class="section-note">PVP 射击是强竞技红海；PVE 刷宝更适合内容、数值、掉落、角色养成和版本更新形成长期目标。</p></div>
+        <div class="compare">
+          <div class="compare-col"> <h4>为什么不是 PVP 射击</h4><p>核心竞争点：玩法新颖度、基础操作品质、匹配质量、竞技环境、反外挂、玩家规模、直播与社区生态。</p><div class="kv-list"><div class="kv"><b>天时</b><span>新兴正在扩量的玩法</span></div><div class="kv"><b>地利</b><span>高品质的管线与强运营能力</span></div><div class="kv"><b>人和</b><span>长期的人材储备</span></div></div><p class="callout" style="margin-top:14px">当前爆破、MP、大逃杀、搜打撤基本已经失去天时，需要等待下一波创新玩法带来的增量。</p></div>
+          <div class="compare-col"> <h4>为什么选择 PVE 刷宝构筑</h4><p>刷宝类游戏有长期价值，并拥有稳定、明确的玩家群体。</p><div class="chips"><span class="chip">转向</span></div><div class="kv-list"><div class="kv"><b>角色收集与养成</b><span>角色厨力、职业幻想、长期投入</span></div><div class="kv"><b>枪械和装备掉落</b><span>暗黑式掉宝与词条追求</span></div><div class="kv"><b>Build 构筑实验</b><span>流派组合、装备搭配、策略深度</span></div><div class="kv"><b>副本 / Boss / 高难</b><span>内容更新与挑战目标</span></div><div class="kv"><b>赛季式更新</b><span>版本节奏驱动长期回流</span></div></div></div>
+        </div>
+        <p class="callout" style="margin-top:16px">结论：PVE 更适合作为较低风险、建立长线品类能力的产品形态。</p>
+      </section>
+
+      <section id="competitors">
+        <div class="section-head"><div><div class="section-kicker">02 Evidence</div><h2>二、PVE 刷宝竞品分析</h2></div><p class="section-note">按三层证据组织：最接近的商业样本、海外长线生命力、二游/PVE 关注度样本。</p></div>
+        <p class="lead">结论：以《逆战：未来》验证国内商业化最接近的机会，以 D2 / Warframe / Remnant2 验证射击刷宝长线生命力，再用二游/PVE PV 热度证明市场关注。</p>
+        <div class="grid three">
+          <div class="card gold"><h4>近端核心参考</h4><div class="chips"><span class="chip">NZ</span><span class="chip">逆战：未来</span></div><p>三端互通 + PVE 核心 + 赛季制 + 不卖强度数值。</p><div class="grid two" style="margin-top:12px"><div class="metric gold"><strong>2000万+</strong><span>预约</span></div><div class="metric gold"><strong>1000万+</strong><span>上线两天</span></div><div class="metric gold"><strong>约6.26亿</strong><span>3个月移动</span></div><div class="metric gold"><strong>约12.95亿</strong><span>首年外推</span></div></div></div>
+          <div class="card blue"><h4>海外长线标杆</h4><div class="chips"><span class="chip">D2</span><span class="chip">Destiny 2</span><span class="chip">WF</span><span class="chip">Warframe</span><span class="chip">R2</span><span class="chip">Remnant II</span></div><p>2017 上线；Steam 峰值约316k；上线初期100万+并发。</p><p>80M+注册；2019收入约1.75亿美元。</p><p>200万+销量；净销售7亿瑞典克朗+。</p></div>
+          <div class="card green"><h4>关注度样本</h4><div class="chips"><span class="chip">PV</span><span class="chip">二重螺旋</span><span class="chip">逆向坍塌:F</span></div><p>首曝实机 PV：5小时150万+；后续约350万；测试PV约430万。</p><p>B站游戏中心：首曝PV&实机演示约154万+播放、1400+评论。</p><p>作用：证明概念曝光具备讨论度。</p></div>
+        </div>
+        <p class="callout" style="margin-top:16px">数据口径：官方/财报/平台公开数据优先；播放量与收入估算需标注媒体或第三方来源，不作为最终财务承诺。</p>
+      </section>
+
+      <section id="audience">
+        <div class="section-head"><div><div class="section-kicker">03 Audience</div><h2>三、目标用户分层</h2></div><p class="section-note">先打穿射击刷宝核心盘，再分别吸收射击玩法玩家与刷宝玩家；泛用户依赖角色、题材和低压 PVE 入口承接。</p></div>
+        <div class="grid three">
+          <div class="card red"><h4>核心</h4><p>射击刷宝玩家</p><p>命运2 / Warframe / 遗迹2 / 逆战未来</p><p>D2 / WF / R2 / NZ</p><p>首轮验证对象：枪感、掉落、Build 实验、终局追求是否成立。</p></div>
+          <div class="card gold"><h4>次核心</h4><p>次核心：射击 + 刷宝</p><p>射击玩法玩家 / 刷宝玩家</p><p>和平 / 三角洲 / 瓦 · 流放之路 / 暗黑</p><p>和平 / 三角洲 / 瓦 · POE / 暗黑</p><p>射击玩家看 PVE 内容；刷宝玩家看词条、流派和赛季目标。</p></div>
+          <div class="card blue"><h4>泛用户</h4><p>泛用户：题材 / 角色 / 低压 PVE</p><p>其他可接受玩法的用户</p><p>角色、题材、美术、低压 PVE、朋友带入</p><p>依赖包装和引导扩量；不作为早期 Demo 硬核标准。</p></div>
+        </div>
+        <p class="callout" style="margin-top:16px">用户扩散靶心图</p><p class="callout" style="margin-top:10px">越靠近中心，越应作为 Demo 和早期验证的评价标准。</p><p class="callout" style="margin-top:10px">验证顺序：核心人群口碑 → 次核心转化 → 泛用户扩量</p><p class="callout" style="margin-top:10px">产品策略：核心定义体验标准；次核心决定扩量空间；泛用户决定包装与引导上限。</p>
+      </section>
+
+      <section id="core">
+        <div class="section-head"><div><div class="section-kicker">04 Core Design</div><h2>四、游戏核心设计</h2></div><p class="section-note">机会来自 PVE 刷宝循环、二游角色资产和移动端低压力体验的交集。</p></div>
+        <div class="grid three"><div class="card red"><h4>PVE 刷宝循环</h4><p>关卡、击杀、掉落、构筑、挑战更高难度，天然支撑长线游玩。</p></div><div class="card gold"><h4>二游角色优势</h4><p>角色标签、剧情包装和长期运营成熟，场景可部分偏向写实元素（明日方舟终末地）。</p></div><div class="card blue"><h4>移动端验证机会</h4><p>低精力、碎片化、重复刷图可能适配移动端；PC 作为品质展示。</p></div></div>
+        <h3 style="margin-top:24px">产品飞轮</h3><p class="lead">用户为什么进来、为什么留下、为什么长期玩。</p><div class="flywheel"><div class="node"><small>01</small><b>角色吸引</b><p>强标签、人设联结、外观价值</p></div><div class="node"><small>02</small><b>射击爽感</b><p>TPS 手感、刷怪反馈、Boss 压迫</p></div><div class="node"><small>03</small><b>掉落 Build</b><p>装备词条、改枪、职业流派</p></div><div class="node"><small>04</small><b>长期留存</b><p>终局随机、赛季更新、社交讨论</p></div></div><p class="callout" style="margin-top:14px">角色吸引 → 射击爽感 → 掉落 Build → 长期留存</p><p class="callout" style="margin-top:10px">世界观记忆点反哺传播与买量素材</p>
+        <h3 style="margin-top:24px">定义为：二次元原子朋克 TPS 多平台刷宝射击</h3>
+        <div class="table-like " style="--cols:2"><div class="thead"><div class="cell head">卖点</div><div class="cell head">说明</div></div><div class="trow"><div class="cell" data-label="卖点">角色驱动</div><div class="cell" data-label="说明">年代感、美感、个性与 Cos 欲望，是情感连接和外观商业化核心。</div></div><div class="trow"><div class="cell" data-label="卖点">TPS 刷宝射击</div><div class="cell" data-label="说明">第三人称承接角色露出与战斗爽感，形成刷图、掉落、改枪循环。</div></div><div class="trow"><div class="cell" data-label="卖点">复古朋克世界</div><div class="cell" data-label="说明">原子朋克、复古未来主义、多地域朋克主题构成差异化。</div></div><div class="trow"><div class="cell" data-label="卖点">暗黑微恐怪物</div><div class="cell" data-label="说明">肉质、胶质、类人或动物，机械占比受控，强化击杀爽感。</div></div><div class="trow"><div class="cell" data-label="卖点">智能推荐 Build</div><div class="cell" data-label="说明">大 Build 库结合推荐系统，兼顾易上手与难精通。</div></div></div>
+        <h3 style="margin-top:24px">流派设计：职业适配推荐武器但不完全限制，保留玩家自由构筑空间。</h3>
+        <div class="table-like " style="--cols:3"><div class="thead"><div class="cell head">流派</div><div class="cell head">定位</div><div class="cell head">设计方向</div></div><div class="trow"><div class="cell" data-label="流派">突击步枪</div><div class="cell" data-label="定位">稳定默认</div><div class="cell" data-label="设计方向">M4、AK 等原型，适合作为新手基准流派。</div></div><div class="trow"><div class="cell" data-label="流派">喷子流</div><div class="cell" data-label="定位">近距爆发</div><div class="cell" data-label="设计方向">弹丸散布、低射速、低弹匣，可扩展多种弹型。</div></div><div class="trow"><div class="cell" data-label="流派">冲锋流</div><div class="cell" data-label="定位">高速近战</div><div class="cell" data-label="设计方向">移动压制、贴脸输出和连杀节奏。</div></div><div class="trow"><div class="cell" data-label="流派">射手 / 狙击</div><div class="cell" data-label="定位">远程精确</div><div class="cell" data-label="设计方向">弱点打击、精英处理和 Boss 阶段输出。</div></div><div class="trow"><div class="cell" data-label="流派">召唤流</div><div class="cell" data-label="定位">联动射击</div><div class="cell" data-label="设计方向">机器人、炮台、无人机形成协同作战。</div></div></div>
+        <p class="callout" style="margin-top:14px">技能模组：投掷类 / Buff 类 / 机动类；状态：流血、燃烧、感电、中毒。</p>
+        <h3 style="margin-top:24px">长线运营：用随机、掉落赌博感、多角色养成和社交展示支撑长尾。</h3><div class="grid three"><div class="card red"><h4>终局结构</h4><p>随机地图、地图 Buff、掉落赌博感、词条追求、多角色养成和社交展示钩子。</p></div><div class="card gold"><h4>单局节奏</h4><p>单局约 20 分钟，以 5 分钟为一个小节，并支持中途保存。</p></div><div class="card green"><h4>长线更新</h4><p>新角色、新地图、新剧情、新 Boss、新武器、新职业分支和新终局规则。</p></div></div><p class="callout" style="margin-top:14px">目标：初始版本 100h+，终局系统支撑 500h+ 长尾追求。</p>
+        <h3 style="margin-top:24px">商业化设计：付费应服务角色和表达，不应替代刷图追求。</h3><div class="compare"><div class="compare-col"><h4>可商业化内容</h4><p>角色外观、武器外观、主题套装、职业幻想装扮、特效外观、轻量成长便利、赛季通行证、收藏展示内容。</p></div><div class="compare-col"><h4>商业化边界</h4><p>不建议重度依赖强命座、强专武，避免破坏装备掉落、自由构筑和刷宝公平感。</p></div></div><p class="callout" style="margin-top:14px">以《逆战·未来》为主要参考：预计首年流水15亿~25亿左右。</p>
+      </section>
+
+      <section id="style"><div class="section-head"><div><div class="section-kicker">05 World Style</div><h2>五、世界观与概念风格</h2></div><p class="section-note">这一页应该成为评审记住项目的风格锚点。</p></div><div class="split"><div><p class="callout" style="margin-bottom:14px">概念图占位</p><div class="grid two"><div class="card red"><h4>角色</h4><p>原子朋克、年代感</p></div><div class="card gold"><h4>物件</h4><p>现实设施智械化、异常化</p></div><div class="card blue"><h4>世界</h4><p>“梦魇感”、“腐坏空间”</p></div><div class="card green"><h4>怪物</h4><p>肉质 / 胶质 / 智械污染</p></div></div><p class="callout" style="margin-top:14px">素材来自网络，仅示意风格：角色：来自重返未来1999场景&怪物：来自波兰艺术家 济斯瓦夫·贝克辛斯基的作品武器：来自原子之心</p></div><div><div class="media-panel"><img src="assets/project_looter_shooter/image26.jpeg" alt="PPT 原始概念图"></div></div></div></section>
+
+      <section id="scope"><div class="section-head"><div><div class="section-kicker">06 Scope & Team</div><h2>六、项目&团队&研发周期估算</h2></div><p class="section-note">用于估算团队规模、成本与周期：以《遗迹 2》为体量主参考，再按三端互通与角色商业化调整。</p></div><div class="compare"><div class="compare-col"><h4>《遗迹 2》体量基准</h4><p>近年中体量 TPS / PVE / Boss / Build 标杆，适合作为首发体量估算上限。</p><div class="grid two" style="margin-top:12px"><div class="metric red"><strong>≈90人</strong><span>媒体转述参与团队</span></div><div class="metric blue"><strong>5世界</strong><span>主世界与流程结构</span></div><div class="metric gold"><strong>70+武器</strong><span>长枪 / 手枪 / 近战</span></div><div class="metric green"><strong>200万+</strong><span>2023Q3 累计销量</span></div></div><p style="margin-top:12px">补充：主线 20+ 小时，全内容 60~100 小时，财报净销售 7 亿瑞典克朗+。</p></div><div class="compare-col"><h4>SPVE 首发完整版本估算口径</h4><p>不是 Demo 范围；用于反推人力、成本和周期。以下为估算框架，后续可按预算压缩。</p><div class="table-like " style="--cols:2"><div class="thead"><div class="cell head">类型</div><div class="cell head">估算内容</div></div><div class="trow"><div class="cell" data-label="类型">角色</div><div class="cell" data-label="估算内容">15 名左右可运营角色；每名具备基础皮肤、战斗动作、技能特效和角色标签。</div></div><div class="trow"><div class="cell" data-label="类型">地图</div><div class="cell" data-label="估算内容">3~4 个主题区域；至少 1 个强记忆点主场景，承接乐园 / 电视台 / 度假镇等方向。</div></div><div class="trow"><div class="cell" data-label="类型">武器</div><div class="cell" data-label="估算内容">6~8 类核心武器；先覆盖突击、喷子、冲锋、狙击、召唤/装置等代表流派。</div></div><div class="trow"><div class="cell" data-label="类型">Build</div><div class="cell" data-label="估算内容">80~120 个装备 / 词条 / 饰品件；支撑 6~8 条可感知流派。</div></div><div class="trow"><div class="cell" data-label="类型">Boss</div><div class="cell" data-label="估算内容">6~8 个 Boss / 大型精英；区分机制 Boss、材料 Boss、剧情 Boss。</div></div><div class="trow"><div class="cell" data-label="类型">商业资产</div><div class="cell" data-label="估算内容">角色外观、武器皮肤、技能特效、通行证样张与收藏展示入口。</div></div></div></div></div><p class="callout" style="margin-top:16px">估算原则：以遗迹2为主参考，但 SPVE 因三端、F2P、角色商业化，成本结构会向角色 / 美术 / 运营倾斜。</p>
+        <h3 style="margin-top:24px">团队能力拆解</h3><p class="lead">射击、刷宝、二次元角色、美术融合、跨端与商业化能力必须同时成立。</p><div class="grid three"><div class="card blue"><h4>UE 跨端</h4><p>三端互通、性能、包体、输入适配；</p></div><div class="card red"><h4>TPS 射击</h4><p>枪感、镜头、命中、换弹、受击反馈；</p></div><div class="card gold"><h4>PVE 关卡/Boss</h4><p>主题地图、精英怪、机制 Boss、复刷事件；</p></div><div class="card green"><h4>刷宝 Build</h4><p>掉落、词条、饰品、流派和难度曲线；长线留存核心。</p></div><div class="card red"><h4>角色人设</h4><p>二次元角色是版本关注和外观商业化载体；</p></div><div class="card blue"><h4>风格化 TA</h4><p>角色好看、世界危险、怪物可击杀；</p></div><div class="card gold"><h4>运营商业化</h4><p>外观、通行证、收藏展示、买量素材；参考逆战未来低数值干扰方向。</p></div></div><p class="callout" style="margin-top:14px">优先级判断：射击手感 > Build 掉落 > 角色厨力 > 跨端性能 > 关卡 Boss > 商业化闭环。</p><p class="callout" style="margin-top:10px">如果核心手感、PVE 内容或 Build 欲望任一项不成立，项目不宜直接进入完整量产。</p>
+        <h3 style="margin-top:24px">团队规模随时间预期</h3><div class="grid five"></div><div class="table-like " style="--cols:2"><div class="thead"><div class="cell head">阶段</div><div class="cell head">规模</div></div><div class="trow"><div class="cell" data-label="阶段">概念验证</div><div class="cell" data-label="规模">8~15人</div></div><div class="trow"><div class="cell" data-label="阶段">核心 Demo</div><div class="cell" data-label="规模">15~30人</div></div><div class="trow"><div class="cell" data-label="阶段">Vertical Slice</div><div class="cell" data-label="规模">30~60人</div></div><div class="trow"><div class="cell" data-label="阶段">量产准备</div><div class="cell" data-label="规模">70~100人</div></div><div class="trow"><div class="cell" data-label="阶段">首发量产</div><div class="cell" data-label="规模">120~150人</div></div></div><p class="callout" style="margin-top:14px">扩张原则：概念验证 → Demo → VS → 量产准备 → 首发量产</p>
+        <h3 style="margin-top:24px">研发进度预估</h3><p class="lead">0~12 个月完成从方向收敛到量产准备，后续进入首发量产。</p><div class="timeline"><div class="phase"><b>P0</b><span>0~1月</span><span>方向收敛</span><p>立项书、竞品数据、首发范围、风险清单</p></div><div class="phase"><b>P1</b><span>1~3月</span><span>战斗原型</span><p>枪感、角色灰盒、精英怪、基础掉落反馈</p></div><div class="phase"><b>P2</b><span>3~6月</span><span>核心 Demo</span><p>1角色、1关卡、1Boss、2条 Build</p></div><div class="phase"><b>P3</b><span>6~9月</span><span>Vertical Slice</span><p>2~3角色、2主题区、商业化样张</p></div><div class="phase"><b>P4</b><span>9~12月</span><span>量产准备</span><p>管线、工具、跨端性能、版本框架</p></div><div class="phase"><b>P5</b><span>12~36月</span><span>首发量产</span><p>多角色、多地图、多Boss、多流派与测试</p></div></div>
+      </section>
+
+      <section id="ai"><div class="section-head"><div><div class="section-kicker">07 AI Native</div><h2>七、AI Native 团队建设思考</h2></div><p class="section-note">新项目应从第一天开始，让数据、讨论、决策和内容生产适配人机协作。</p></div><p class="callout">核心观点：不只是工具，而是工作方式</p><p class="callout" style="margin-top:10px">负责人自上而下推动</p><div class="grid four" style="margin-top:16px"><div class="card blue"><h4>01 新项目从零构建</h4><p>从立项阶段定义 AI 友好的数据格式、文档结构和协作标准。</p></div><div class="card green"><h4>02 PVE 更适合 AI 提效</h4><p>内容量产、规则组合、版本迭代环节更多，更容易结构化拆分。</p></div><div class="card gold"><h4>03 AI 成为讨论必备环节</h4><p>竞品、系统、版本方案、反馈归因，都默认进入 AI 辅助讨论。</p></div><div class="card red"><h4>04 持续提高人机合作方式</h4><p>数据 AI 友好；问题拆解成框架；决策过程留依据、可追溯。</p></div></div></section>
+
+      <section id="summary"><div class="section-head"><div><div class="section-kicker">08 Summary</div><h2>总结</h2></div><p class="section-note">项目价值：射击游戏品类研发，二次元管线，AI Native团队积累。</p></div><div class="grid three"><div class="card red"><h4>射击游戏品类研发</h4><p>通过该研目积累新一代的射击游戏品类研发团队经验，待有合适玩法机会可把握PVP竞技方向。</p></div><div class="card gold"><h4>二次元及角色管线</h4><p>可积累二次元世界构建、角色设计、渲染管线等团队经验，为后续重度游戏的研发积累竞争优势。</p></div><div class="card green"><h4>AI Native团队积累</h4><p>自组建起完全融入人机合作范式，积累研发与设计数据资产，提高生产效能。</p></div></div></section>
+    </div>
+  </div>
+</main>
 </body>
 </html>
